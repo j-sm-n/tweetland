@@ -13,10 +13,12 @@ RSpec.feature "The sign up process", type: :feature do
 
     it "allows new users to sign up" do
         visit signup_path
-        within("#signup") do
+        within("#signup-form") do
             fill_in 'Email', with: 'user@example.com'
             fill_in 'Password', with: 'password'
+            fill_in 'Password confirmation', with: 'password'
         end
+    
         click_button 'Sign up'
 
         expect(page).to have_content 'Success! Welcome to Tweetland!'
