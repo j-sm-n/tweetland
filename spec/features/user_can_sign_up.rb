@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.feature "The sign up process", type: :feature do
     it "doesn't display tweets to guests" do
-        skip
         visit root_path
 
         expect(page).to have_content 'Welcome to Tweetland! Login or Sign up to see some tweets!'
@@ -22,5 +21,6 @@ RSpec.feature "The sign up process", type: :feature do
         click_button 'Sign up'
 
         expect(page).to have_content 'Success! Welcome to Tweetland!'
+        expect(page).to have_current_path(root_path)
     end
 end
