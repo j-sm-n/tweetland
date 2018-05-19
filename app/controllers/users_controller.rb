@@ -5,7 +5,6 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(allowed_params)
-        byebug
         if @user.save
             redirect_to root_path, notice: 'Success! Welcome to Tweetland!'
         else
@@ -16,6 +15,6 @@ class UsersController < ApplicationController
 private
 
     def allowed_params
-        params.require(:user).permit(:email, :password_digest)
+        params.require(:user).permit(:email, :password, :password_confirmation)
     end
 end
