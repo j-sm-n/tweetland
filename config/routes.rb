@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   get '/signup' => 'users#new'
 
-  # resources :sessions, only: [:new, :create]
   resources :users
   resources :tweets, only: [:index]
 end
