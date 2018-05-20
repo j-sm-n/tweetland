@@ -5,7 +5,8 @@ class TweetsController < ApplicationController
     end
 
     def create
-        if TwitterService.is_valid_handle?(tweet_search_params)
+        byebug
+        if TwitterService.is_valid_handle?(tweet_search_params['handle_search'])
             @tweets = TwitterService.find_top_tweets_by_handle(tweet_search_params)
             redirect_to tweets_path
         else
