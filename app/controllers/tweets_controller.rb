@@ -3,4 +3,20 @@ class TweetsController < ApplicationController
 
     def index
     end
+
+    def create
+        if TwitterService.is_valid_handle?(tweet_search_params)
+            @tweets = TwitterService.find_top_tweets_by_handle(tweet_search_params)
+            redirect_to tweets_path
+        else
+            flash[:error] = "Twitter handle doesn't exist"
+            render :index
+        end
+    end
+
+    private
+
+    def tweet_search_params
+        params.permit(:handle_search)
+    end
 end
