@@ -10,8 +10,10 @@
 
     <div id='tweets'>
         <ul>
-            <% @tweets.each do |tweet| %>
-                <li class='tweet'><%= tweet.text %> | <%= tweet.created_at %></li>
+            <% if !@tweets.nil? %>
+                <% @tweets.each do |tweet| %>
+                    <li class='tweet'><%= tweet.text %> | <%= tweet.created_at %></li>
+                <% end %>
             <% end %>
         </ul>
     </div>
