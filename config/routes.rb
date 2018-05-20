@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
 
   resources :users
-  resources :tweets, only: [:index]
+  resources :tweets, only: [:index, :create]
 end
