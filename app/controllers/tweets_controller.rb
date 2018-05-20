@@ -1,3 +1,3 @@
-class TweetsController
+class TweetsController < ApplicationController
     
 end
