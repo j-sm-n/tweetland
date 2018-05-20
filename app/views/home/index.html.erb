@@ -1,0 +1,8 @@
+<div>
+    <h1>Welcome to Tweetland!</h1>
+    <% if current_user %>
+       Here eventually lies a search bar and some tweets
+    <% else %>
+        <%= link_to  "Login", login_path %> or <%= link_to  "Sign up", signup_path %> to see some tweets!
+    <% end %>
+</div>
