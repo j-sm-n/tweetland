@@ -5,4 +5,4 @@ config = {
   consumer_secret: ENV['twitter_consumer_secret'],
 }
 
-Twitter::REST::Client.new(config)
+CLIENT = Twitter::REST::Client.new(config)
