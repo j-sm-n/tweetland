@@ -26,6 +26,8 @@ group :development, :test do
   gem "rspec-rails"
   gem 'factory_bot_rails'
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+  gem 'webmock'  
+  gem 'vcr' 
 end
 
 group :development do
