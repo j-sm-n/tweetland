@@ -8,7 +8,7 @@ RSpec.describe Tweet, type: :model do
         expect(tweet.created_at[0..9]).to eq(raw_tweet[:created_at][0..9])
     end
 
-    xit 'has content' do
+    it 'has content' do
         raw_tweet = Faker::Twitter.status
         tweet = Tweet.new(raw_tweet)
 

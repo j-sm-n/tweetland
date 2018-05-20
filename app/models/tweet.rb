@@ -1,8 +1,10 @@
 class Tweet
-    attr_reader :created_at
+    attr_reader :created_at,
+                :text
     
     def initialize(raw_tweet)
         @created_at = format_time(raw_tweet[:created_at])
+        @text       = raw_tweet[:text]
     end
 
     def format_time(raw_time)
