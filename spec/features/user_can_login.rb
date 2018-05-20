@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.feature "The login process", type: :feature do 
     it "allows a user to login" do
-        # allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
         user = User.create(
             email: 'sam@test.com',
             password: 'taco123',
