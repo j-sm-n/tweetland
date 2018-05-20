@@ -24,42 +24,39 @@ RSpec.feature "Twitter handle search", type: :feature do
         end
     end
 
-    # it "sanitizes Twitter handdle when handle starts with @" do
-    #     skip
-    #     visit tweets_path
-    #     within("#tweet-search") do
-    #         fill_in 'handle_search', with: "@j_sm_n"
-    #     end
-    #     click_button 'Search'
+    xit "sanitizes Twitter handdle when handle starts with @" do
+        visit tweets_path
+        within("#tweet-search") do
+            fill_in 'handle_search', with: "@j_sm_n"
+        end
+        click_button 'Search'
 
-    #     within('#tweets') do
-    #         expect(page).to have_css('li .tweet', count: 25)
-    #     end
-    # end
+        within('#tweets') do
+            expect(page).to have_css('li .tweet', count: 25)
+        end
+    end
 
-    # it "throws error message when Twitter handle doesn't exist" do
-    #     skip
-    #     visit tweets_path
-    #     within("#tweet-search") do
-    #         fill_in 'handle_search', with: "@j/sm_n"
-    #     end
-    #     click_button 'Search'
+    xit "throws error message when Twitter handle doesn't exist" do
+        visit tweets_path
+        within("#tweet-search") do
+            fill_in 'handle_search', with: "@j/sm_n"
+        end
+        click_button 'Search'
 
-    #     within('#tweets') do
-    #         expect(page).to have_content "Twitter handle doesn't exist"
-    #     end
-    # end
+        within('#tweets') do
+            expect(page).to have_content "Twitter handle doesn't exist"
+        end
+    end
 
-    # it "shows appropriate message for users with no tweets" do
-    #     skip
-    #     visit tweets_path
-    #     within("#tweet-search") do
-    #         fill_in 'handle_search', with: "@joe111"
-    #     end
-    #     click_button 'Search'
+    xit "shows appropriate message for users with no tweets" do
+        visit tweets_path
+        within("#tweet-search") do
+            fill_in 'handle_search', with: "@joe111"
+        end
+        click_button 'Search'
 
-    #     within('#tweets') do
-    #         expect(page).to have_content 'This user has no tweets'
-    #     end
-    # end
+        within('#tweets') do
+            expect(page).to have_content 'This user has no tweets'
+        end
+    end
 end
