@@ -9,9 +9,8 @@ RSpec.feature "Twitter handle search", type: :feature do
         )
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
         visit tweets_path
-
         within("#tweet-search") do
-            fill_in 'twitter-handle-search', with: "@j_sm_n"
+            fill_in 'handle_search', with: "@j_sm_n"
         end
         click_button 'Search'
 
