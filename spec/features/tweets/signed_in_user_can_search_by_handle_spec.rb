@@ -14,25 +14,26 @@ RSpec.feature "Twitter handle search", type: :feature do
         sign_in_user
         visit tweets_path
         within("#tweet-search") do
-            fill_in 'handle_search', with: "@j_sm_n"
+            fill_in 'handle_search', with: "j_sm_n"
         end
         click_button 'Search'
 
+        expect(page).to have_current_path(tweets_path)
         within('#tweets') do
             expect(page).to have_css('li .tweet', count: 25)
         end
     end
 
-    # it "throws error message when Twitter handle doesn't start with @" do
+    # it "sanitizes Twitter handdle when handle starts with @" do
     #     skip
     #     visit tweets_path
     #     within("#tweet-search") do
-    #         fill_in 'handle_search', with: "j_sm_n"
+    #         fill_in 'handle_search', with: "@j_sm_n"
     #     end
     #     click_button 'Search'
 
     #     within('#tweets') do
-    #         expect(page).to have_content "Twitter handle must start with an '@'"
+    #         expect(page).to have_css('li .tweet', count: 25)
     #     end
     # end
 
