@@ -10,7 +10,7 @@ RSpec.feature "Twitter handle search", type: :feature do
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     end
 
-    it "allows user to see top 25 tweets of specific user" do
+    xit "allows user to see top 25 tweets of specific user" do
         sign_in_user
         visit tweets_path
         within("#tweet-search") do
@@ -43,9 +43,7 @@ RSpec.feature "Twitter handle search", type: :feature do
         end
         click_button 'Search'
 
-        within('#tweets') do
-            expect(page).to have_content "Twitter handle doesn't exist"
-        end
+        expect(page).to have_content "Twitter handle doesn't exist"
     end
 
     xit "shows appropriate message for users with no tweets" do
