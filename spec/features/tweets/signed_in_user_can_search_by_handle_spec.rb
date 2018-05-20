@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature "Twitter handle search", type: :feature do 
-    before(:all) do
+    def sign_in_user
         user = User.create(
             email: 'jaz@test.com',
             password: 'taco123',
@@ -11,6 +11,7 @@ RSpec.feature "Twitter handle search", type: :feature do
     end
 
     it "allows user to see top 25 tweets of specific user" do
+        sign_in_user
         visit tweets_path
         within("#tweet-search") do
             fill_in 'handle_search', with: "@j_sm_n"
@@ -22,42 +23,42 @@ RSpec.feature "Twitter handle search", type: :feature do
         end
     end
 
-    it "throws error message when Twitter handle doesn't start with @" do
-        skip
-        visit tweets_path
-        within("#tweet-search") do
-            fill_in 'handle_search', with: "j_sm_n"
-        end
-        click_button 'Search'
+    # it "throws error message when Twitter handle doesn't start with @" do
+    #     skip
+    #     visit tweets_path
+    #     within("#tweet-search") do
+    #         fill_in 'handle_search', with: "j_sm_n"
+    #     end
+    #     click_button 'Search'
 
-        within('#tweets') do
-            expect(page).to have_content "Twitter handle must start with an '@'"
-        end
-    end
+    #     within('#tweets') do
+    #         expect(page).to have_content "Twitter handle must start with an '@'"
+    #     end
+    # end
 
-    it "throws error message when Twitter handle doesn't exist" do
-        skip
-        visit tweets_path
-        within("#tweet-search") do
-            fill_in 'handle_search', with: "@j/sm_n"
-        end
-        click_button 'Search'
+    # it "throws error message when Twitter handle doesn't exist" do
+    #     skip
+    #     visit tweets_path
+    #     within("#tweet-search") do
+    #         fill_in 'handle_search', with: "@j/sm_n"
+    #     end
+    #     click_button 'Search'
 
-        within('#tweets') do
-            expect(page).to have_content "Twitter handle doesn't exist"
-        end
-    end
+    #     within('#tweets') do
+    #         expect(page).to have_content "Twitter handle doesn't exist"
+    #     end
+    # end
 
-    it "shows appropriate message for users with no tweets" do
-        skip
-        visit tweets_path
-        within("#tweet-search") do
-            fill_in 'handle_search', with: "@joe111"
-        end
-        click_button 'Search'
+    # it "shows appropriate message for users with no tweets" do
+    #     skip
+    #     visit tweets_path
+    #     within("#tweet-search") do
+    #         fill_in 'handle_search', with: "@joe111"
+    #     end
+    #     click_button 'Search'
 
-        within('#tweets') do
-            expect(page).to have_content 'This user has no tweets'
-        end
-    end
+    #     within('#tweets') do
+    #         expect(page).to have_content 'This user has no tweets'
+    #     end
+    # end
 end
