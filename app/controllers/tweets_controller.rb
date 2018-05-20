@@ -3,4 +3,14 @@ class TweetsController < ApplicationController
 
     def index
     end
+
+    def create
+        byebug
+    end
+
+    private
+
+    def tweet_search_params
+        params.permit(:handle_search)
+    end
 end
