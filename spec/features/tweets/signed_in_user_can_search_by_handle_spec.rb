@@ -1,13 +1,16 @@
 require 'rails_helper'
 
 RSpec.feature "Twitter handle search", type: :feature do 
-    it "allows user to see top 25 tweets of specific user" do
+    before(:all) do
         user = User.create(
             email: 'jaz@test.com',
             password: 'taco123',
             password_confirmation: 'taco123'
         )
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    end
+
+    it "allows user to see top 25 tweets of specific user" do
         visit tweets_path
         within("#tweet-search") do
             fill_in 'handle_search', with: "@j_sm_n"
@@ -16,6 +19,45 @@ RSpec.feature "Twitter handle search", type: :feature do
 
         within('#tweets') do
             expect(page).to have_css('li .tweet', count: 25)
+        end
+    end
+
+    it "throws error message when Twitter handle doesn't start with @" do
+        skip
+        visit tweets_path
+        within("#tweet-search") do
+            fill_in 'handle_search', with: "j_sm_n"
+        end
+        click_button 'Search'
+
+        within('#tweets') do
+            expect(page).to have_content "Twitter handle must start with an '@'"
+        end
+    end
+
+    it "throws error message when Twitter handle doesn't exist" do
+        skip
+        visit tweets_path
+        within("#tweet-search") do
+            fill_in 'handle_search', with: "@j/sm_n"
+        end
+        click_button 'Search'
+
+        within('#tweets') do
+            expect(page).to have_content "Twitter handle doesn't exist"
+        end
+    end
+
+    it "shows appropriate message for users with no tweets" do
+        skip
+        visit tweets_path
+        within("#tweet-search") do
+            fill_in 'handle_search', with: "@joe111"
+        end
+        click_button 'Search'
+
+        within('#tweets') do
+            expect(page).to have_content 'This user has no tweets'
         end
     end
 end
