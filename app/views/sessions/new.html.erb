@@ -1,0 +1,16 @@
+<div class="container">
+    <div id="login-form">
+        <%= form_for(:session, url: login_path) do |f| %>
+            <%= f.label :email %>
+            <%= f.text_field :email %>
+
+            <%= f.label :password %>
+            <%= f.password_field :password %>
+
+            <%= f.submit 'Login' %>
+        <% end %>
+        <br>
+
+        <p>Not registered? <%= link_to "Create Account", new_user_path %></p>
+    </div>
+</div>
