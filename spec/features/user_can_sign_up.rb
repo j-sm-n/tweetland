@@ -4,10 +4,10 @@ RSpec.feature "The sign up process", type: :feature do
     it "doesn't display tweets to guests" do
         visit root_path
 
-        expect(page).to have_content 'Welcome to Tweetland! Login or Sign up to see some tweets!'
+        expect(page).to have_content 'Login or Sign up to see some tweets!'
         
         visit tweets_path
-        expect(page).to have_content 'Welcome to Tweetland! Login or Sign up to see some tweets!'
+        expect(page).to have_content 'Login or Sign up to see some tweets!'
     end
 
     it "allows new users to sign up" do
