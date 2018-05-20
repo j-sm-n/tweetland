@@ -5,7 +5,13 @@ class TweetsController < ApplicationController
     end
 
     def create
-        byebug
+        if TwitterService.is_valid_handle?(tweet_search_params)
+            @tweets = TwitterService.find_top_tweets_by_handle(tweet_search_params)
+            redirect_to tweets_path
+        else
+            flash[:error] = "Twitter handle doesn't exist"
+            render :index
+        end
     end
 
     private
