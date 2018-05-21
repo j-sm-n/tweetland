@@ -91,4 +91,6 @@ config.webpacker.check_yarn_integrity = false
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.cache_store = :redis_store, 'redis://h:p87c4dfaa087f76e4ecb1231ba0b89e3bf10f014a68af019c2f28b32abb8af4c4@ec2-34-232-18-220.compute-1.amazonaws.com:10519', { expires_in: 90.minutes }
 end
