@@ -1,0 +1,10 @@
+<div class='container'>    
+    <h3>Look up tweets by Twitter handle</h3>
+
+    <div id='tweet-search'>
+        <%= form_tag(tweets_path) do %>
+            <%= text_field_tag :handle_search %>
+            <%= submit_tag 'Search' %>
+        <% end %>
+    </div>
+</div>

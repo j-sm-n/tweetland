@@ -1,16 +1,20 @@
 class TweetsController < ApplicationController
-    before_action :logged_in?, only: [:index]
+    before_action :logged_in?, only: [:index, :search]
 
     def index
+        @tweets = @tweets = TwitterService.find_top_tweets_by_handle(params[:handle])
+    end
+
+    def search
     end
 
     def create
-        if TwitterService.is_valid_handle?(tweet_search_params['handle_search'])
-            @tweets = TwitterService.find_top_tweets_by_handle(tweet_search_params)
-            redirect_to tweets_path
+        handle = tweet_search_params['handle_search']
+        if TwitterService.is_valid_handle?(handle)
+            redirect_to controller: 'tweets', action: 'index', handle: handle
         else
             flash[:error] = "Twitter handle doesn't exist"
-            render :index
+            render :search
         end
     end
 
