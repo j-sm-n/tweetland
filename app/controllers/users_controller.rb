@@ -7,7 +7,7 @@ class UsersController < ApplicationController
         @user = User.new(allowed_params)
         if @user.save
             session[:user_id] = @user.id
-            redirect_to root_path, notice: 'Success! Welcome to Tweetland!'
+            redirect_to root_path, success: 'Success! Welcome to Tweetland!'
         else
             render :new
         end

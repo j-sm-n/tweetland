@@ -9,13 +9,12 @@
   </head>
 
   <body>
-    <div id="container">
-
-      <nav>
-        <ul>
+      <nav class='navbar navbar-dark bg-primary'>
+        <a class="navbar-brand" href="#">Tweetland</a>
+        <ul class='navbar-nav mr-auto'>
           <% if current_user %>
-            <li>Logged in as <%= current_user.email %></li>
-            <li><%= link_to "Logout", logout_path %></li>
+            <li class='nav-item'>Logged in as <%= current_user.email %></li>
+            <li class='nav-item'><%= link_to "Logout", logout_path %></li>
           <% else %>
             <li><%= link_to "Login", login_path %></li>
           <% end %>
@@ -23,9 +22,10 @@
       </nav>
 
       <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, id: "flash_#{name}" %>
+        <%= content_tag :div, msg, class: "alert alert_#{name}", role: 'alert' %>
       <% end %>
-      <%= yield %>
-    </div>
+      <div class='container'>
+        <%= yield %>
+      </div>
   </body>
 </html>
