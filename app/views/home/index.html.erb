@@ -1,7 +1,7 @@
 <div>
     <h1>Welcome to Tweetland!</h1>
     <% if current_user %>
-       Start looking up some tweets by a Twitter user handle <%= link_to  "here!", tweets_path %>
+       Start looking up some tweets by a Twitter user handle <%= link_to  "here!", search_path %>
     <% else %>
         <%= link_to  "Login", login_path %> or <%= link_to  "Sign up", signup_path %> to see some tweets!
     <% end %>

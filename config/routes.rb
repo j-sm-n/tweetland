@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
 
   resources :users
+  get '/search', to: 'tweets#search'
   resources :tweets, only: [:index, :create]
 end
