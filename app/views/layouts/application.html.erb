@@ -9,21 +9,23 @@
   </head>
 
   <body>
-      <nav class='navbar navbar-dark bg-primary'>
-        <a class="navbar-brand" href="#">Tweetland</a>
-        <ul class='navbar-nav mr-auto'>
-          <% if current_user %>
-            <li class='nav-item'>Logged in as <%= current_user.email %></li>
-            <li class='nav-item'><%= link_to "Logout", logout_path %></li>
-          <% else %>
-            <li><%= link_to "Login", login_path %></li>
-          <% end %>
-        </ul>
+      <nav class='navbar navbar-light' style='background-color: #e3f2fd;'>
+        <a class="navbar-brand" href="/">Tweetland</a>
+          <div class="collapse navbar-collapse">
+            <ul class='navbar-nav mr-auto'>
+              <% if current_user %>
+                <li class='nav-item' style='list-style:none;'>Logged in as <%= current_user.email %> | <%= link_to "Logout", logout_path, class: 'nav-link' %> </li>
+              <% else %>
+                <li><%= link_to "Login", login_path %></li>
+              <% end %>
+            </ul>
+          </div>
       </nav>
 
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, class: "alert alert_#{name}", role: 'alert' %>
       <% end %>
+
       <div class='container'>
         <%= yield %>
       </div>
