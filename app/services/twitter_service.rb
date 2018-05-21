@@ -2,7 +2,7 @@ class TwitterService
   def self.find_top_tweets_by_handle(handle)
     tweets = []
     CLIENT.user_timeline(handle, count: 25).each do |tweet|
-        tweets << Tweet.new(tweet)
+        tweets << tweet
     end
     tweets
   end

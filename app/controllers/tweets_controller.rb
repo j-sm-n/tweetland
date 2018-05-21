@@ -1,8 +1,10 @@
 class TweetsController < ApplicationController
+    include TweetHelper
     before_action :logged_in?, only: [:index, :search]
 
     def index
-        @tweets = @tweets = TwitterService.find_top_tweets_by_handle(params[:handle])
+        raw_tweets = fetch_tweets_by_handle(params[:handle])
+        @tweets    = get_formatted_tweets(raw_tweets)
     end
 
     def search
