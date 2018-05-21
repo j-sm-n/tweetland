@@ -15,7 +15,7 @@ class TweetsController < ApplicationController
         if TwitterService.is_valid_handle?(handle)
             redirect_to controller: 'tweets', action: 'index', handle: handle
         else
-            flash[:error] = "Twitter handle doesn't exist"
+            flash[:danger] = "Twitter handle doesn't exist"
             render :search
         end
     end

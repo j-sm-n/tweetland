@@ -22,6 +22,8 @@ gem 'redis-namespace'
 gem 'redis-rails'
 gem 'redis-rack-cache'
 gem 'bcrypt', '~> 3.1.7'
+gem "twitter-bootstrap-rails"
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
